@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 16px;
+        color: #202124;
+      }
+      h2 {
+        font-size: 18px;
+        margin: 0 0 8px;
+      }
+      p.hint {
+        color: #5f6368;
+        font-size: 13px;
+        line-height: 1.4;
+        margin: 0 0 16px;
+      }
+      button {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 14px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-bottom: 8px;
+      }
+      button:disabled {
+        cursor: default;
+        opacity: 0.65;
+      }
+      button.primary {
+        background: #1a73e8;
+        color: #fff;
+        font-weight: bold;
+      }
+      button.secondary {
+        background: #e8f0fe;
+        color: #174ea6;
+      }
+      .steps {
+        margin: 16px 0 8px;
+        padding: 0;
+        list-style: none;
+      }
+      .steps li {
+        font-size: 13px;
+        color: #80868b;
+        margin: 6px 0;
+        padding-left: 18px;
+        position: relative;
+      }
+      .steps li::before {
+        content: '•';
+        position: absolute;
+        left: 4px;
+      }
+      .steps li.active {
+        color: #1a73e8;
+        font-weight: bold;
+      }
+      .steps li.done {
+        color: #137333;
+      }
+      .steps li.error {
+        color: #c5221f;
+      }
+      .msg {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.4;
+        display: none;
+        white-space: pre-wrap;
+      }
+      .msg.ok {
+        display: block;
+        background: #e6f4ea;
+        color: #137333;
+      }
+      .msg.error {
+        display: block;
+        background: #fce8e6;
+        color: #c5221f;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Собрать отчёт</h2>
+    <p class="hint">Поля на листе «Настройки». Одна кнопка — данные появятся на листе «Данные».</p>
+    <button class="primary" id="runBtn" onclick="runReport()">Собрать отчёт</button>
+    <button class="secondary" id="goalsBtn" onclick="runGoals()">Показать цели счётчика</button>
+    <ul class="steps" id="steps"></ul>
+    <div class="msg" id="msg"></div>
+    <script>
+      var pollTimer = null;
+      var STEP_ORDER = [
+        { id: 'start', title: 'Настройки' },
+        { id: 'goals', title: 'Цели' },
+        { id: 'behavior', title: 'Визиты и поведение' },
+        { id: 'other', title: 'Другие источники' },
+        { id: 'age', title: 'Возраст' },
+        { id: 'gender', title: 'Пол' },
+        { id: 'devices', title: 'Устройства' },
+        { id: 'conv', title: 'Конверсии' },
+        { id: 'write', title: 'Запись в таблицу' },
+        { id: 'done', title: 'Готово' }
+      ];
+
+      function setBusy(busy) {
+        document.getElementById('runBtn').disabled = busy;
+        document.getElementById('goalsBtn').disabled = busy;
+      }
+
+      function showMsg(text, ok) {
+        var el = document.getElementById('msg');
+        el.className = 'msg ' + (ok ? 'ok' : 'error');
+        el.textContent = text;
+      }
+
+      function clearMsg() {
+        var el = document.getElementById('msg');
+        el.className = 'msg';
+        el.textContent = '';
+      }
+
+      function renderSteps(progress) {
+        var current = progress && progress.step ? progress.step : '';
+        var error = current === 'error';
+        var html = '';
+        for (var i = 0; i < STEP_ORDER.length; i++) {
+          var step = STEP_ORDER[i];
+          var cls = '';
+          if (error && current === 'error') {
+            cls = i === 0 ? 'error' : '';
+          } else if (current === 'done') {
+            cls = 'done';
+          } else if (step.id === current) {
+            cls = 'active';
+          } else {
+            var currentIndex = -1;
+            for (var j = 0; j < STEP_ORDER.length; j++) {
+              if (STEP_ORDER[j].id === current) currentIndex = j;
+            }
+            if (currentIndex > i) cls = 'done';
+          }
+          html += '<li class="' + cls + '">' + step.title + '</li>';
+        }
+        if (error && progress.label) {
+          html += '<li class="error">' + progress.label + '</li>';
+        }
+        document.getElementById('steps').innerHTML = html;
+      }
+
+      function startPoll() {
+        stopPoll();
+        pollTimer = setInterval(function() {
+          google.script.run.withSuccessHandler(renderSteps).getReportProgress();
+        }, 700);
+      }
+
+      function stopPoll() {
+        if (pollTimer) {
+          clearInterval(pollTimer);
+          pollTimer = null;
+        }
+      }
+
+      function runReport() {
+        clearMsg();
+        setBusy(true);
+        renderSteps({ step: 'start', label: 'Читаю настройки' });
+        startPoll();
+        google.script.run
+          .withSuccessHandler(function(res) {
+            stopPoll();
+            renderSteps({ step: 'done' });
+            setBusy(false);
+            showMsg((res && res.message) || 'Готово.', true);
+          })
+          .withFailureHandler(function(err) {
+            stopPoll();
+            setBusy(false);
+            var text = err && err.message ? err.message : String(err);
+            renderSteps({ step: 'error', label: text });
+            showMsg(text, false);
+          })
+          .collectReport();
+      }
+
+      function runGoals() {
+        clearMsg();
+        setBusy(true);
+        renderSteps({ step: 'goals' });
+        startPoll();
+        google.script.run
+          .withSuccessHandler(function(res) {
+            stopPoll();
+            renderSteps({ step: 'done' });
+            setBusy(false);
+            showMsg((res && res.message) || 'Цели обновлены.', true);
+          })
+          .withFailureHandler(function(err) {
+            stopPoll();
+            setBusy(false);
+            var text = err && err.message ? err.message : String(err);
+            renderSteps({ step: 'error', label: text });
+            showMsg(text, false);
+          })
+          .listCounterGoals();
+      }
+
+      renderSteps({ step: '' });
+    </script>
+  </body>
+</html>
