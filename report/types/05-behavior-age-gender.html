@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: возраст и пол</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="title"><span class="accent">Поведенческие</span><br>факторы</h1>
+        <p class="age-sub">возраст пользователей:</p>
+        <div class="bars" id="age-bars"></div>
+        <div class="gender-row">
+          <div class="gender-item male">
+            <div class="gender-donut" id="gender-male">
+              <span class="gval" data-bind="genderShare.male" data-fmt="pct0"></span>
+            </div>
+            <div class="gender-cap"><i></i>мужчины</div>
+          </div>
+          <div class="gender-item female">
+            <div class="gender-donut" id="gender-female">
+              <span class="gval" data-bind="genderShare.female" data-fmt="pct0"></span>
+            </div>
+            <div class="gender-cap"><i></i>женщины</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

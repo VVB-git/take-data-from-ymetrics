@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: титульный</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide slide-cover">
+      <div class="cover-hero">
+        <span class="cover-brand" data-bind="meta.brand"></span>
+        <span class="cover-site" data-bind="meta.campaignSite"></span>
+      </div>
+      <div class="cover-body">
+        <p class="cover-kind" data-bind="meta.reportKind"></p>
+        <h1 class="cover-title" data-bind="meta.campaignName"></h1>
+        <div class="cover-dates">
+          <div>
+            <span class="label">Отчётный период</span>
+            <span class="value"><span data-bind="meta.periodFrom"></span> — <span data-bind="meta.periodTo"></span></span>
+          </div>
+          <div>
+            <span class="label">Цикл <span data-bind="meta.cycleNumber"></span></span>
+            <span class="value"><span data-bind="meta.cycleFrom"></span> — <span data-bind="meta.cycleTo"></span></span>
+          </div>
+        </div>
+        <p class="cover-report-date">Дата отчёта <span data-bind="meta.reportDate"></span></p>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

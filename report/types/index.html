@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Типы слайдов отчёта</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body style="background:#f4f3fd">
+  <div class="catalog">
+    <h1>Типы слайдов из Figma</h1>
+    <p>В файле «Отчеты у ВВБ» два формата. Для подстановки данных из Метрики / Excel используется <strong>портретный шаблон ~595×896</strong> (кампании вроде «Уют мебель», Divano, Compressortyt). Широкие слайды 1920×1080 — сводные аналитические экраны с уникальными графиками; их в этот набор не выносил.</p>
+    <p>Повторяющиеся кадры в Figma сведены к <strong>11 типам</strong>. Каждый тип — отдельная HTML-страница. Цифры берутся из <code>report/data.js</code>, вёрстку трогать не нужно.</p>
+    <ul class="type-list">
+      <li><a href="01-cover.html">01. Титульный</a> — название РК, сайт, отчётный период, цикл, дата отчёта. В Figma: «Титульник основа», «Главная».</li>
+      <li><a href="02-mediaplan.html">02. Медиаплан план/факт</a> — показы, охват, частота, CTR, бюджет, клики. «Плановые показатели», «План/Факт».</li>
+      <li><a href="03-behavior-results.html">03. Поведение: результаты</a> — время / отказы / глубина (метка vs без метки) + доли устройств. «Вторичка».</li>
+      <li><a href="04-behavior-devices.html">04. Поведение по устройствам</a> — отказы, глубина, время для ПК / смартфонов / планшетов.</li>
+      <li><a href="05-behavior-age-gender.html">05. Возраст и пол (доли)</a> — бары возраста и пончики пола.</li>
+      <li><a href="06-age-stats.html">06. Статистика по возрасту</a> — те же 3 метрики по возрастам и по полу. «Скрины».</li>
+      <li><a href="07-matching.html">07. Audience matching</a> — % matching и % новых пользователей. «Мэтчинг».</li>
+      <li><a href="08-conversions.html">08. Post-click конверсии</a> — прямые / ассоциированные + CPL. «Конверсии».</li>
+      <li><a href="09-postview.html">09. Post-view</a> — таблица целей и количества. «Результаты по PV».</li>
+      <li><a href="10-banners.html">10. Статистика по баннерам</a> — CTR, клики, показы по креативам. «Баннеры стата».</li>
+      <li><a href="11-contacts.html">11. Контакты</a> — телефон и почта. «Конец».</li>
+    </ul>
+    <p>Собранный пример кампании: <a href="../index.html">полный отчёт «Уют мебель»</a> (титул + медиаплан + поведение + контакты, без matching/конверсий/баннеров).</p>
+  </div>
+</body>
+</html>

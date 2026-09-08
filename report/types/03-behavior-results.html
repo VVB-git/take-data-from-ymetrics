@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: результаты работы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="title">Поведенческие факторы. <span class="accent">Результаты</span> работы</h1>
+        <p class="section-label">Вторичные показатели по трафику Programmatic.ru</p>
+        <div class="kpi-row">
+          <article class="kpi-card">
+            <header>Среднее время<br>на сайте, сек</header>
+            <div class="val" data-bind="behavior.programmatic.avgDuration"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Показатель отказов, %</header>
+            <div class="val" data-bind="behavior.programmatic.bounceRate" data-fmt="bounce"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Глубина<br>просмотра, стр.</header>
+            <div class="val" data-bind="behavior.programmatic.pageDepth" data-fmt="depth"></div>
+          </article>
+        </div>
+        <p class="section-label">Вторичные показатели по всему трафику сайта без Programmatic.ru</p>
+        <div class="kpi-row">
+          <article class="kpi-card">
+            <header>Среднее время<br>на сайте, сек</header>
+            <div class="val" data-bind="behavior.other.avgDuration"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Показатель отказов, %</header>
+            <div class="val" data-bind="behavior.other.bounceRate" data-fmt="bounce"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Глубина<br>просмотра, стр.</header>
+            <div class="val" data-bind="behavior.other.pageDepth" data-fmt="depth"></div>
+          </article>
+        </div>
+        <h2 class="devices-title"><span class="accent">статистика</span> по типам устройств</h2>
+        <div class="device-chart">
+          <div class="device-donut-wrap">
+            <div class="device-donut" id="device-donut"></div>
+            <span class="pct mobile" data-bind="devicesShare.mobile" data-fmt="pct0"></span>
+            <span class="pct tablet" data-bind="devicesShare.tablet" data-fmt="pct0"></span>
+            <span class="pct desktop" data-bind="devicesShare.desktop" data-fmt="pct0"></span>
+          </div>
+          <div class="chart-legend">
+            <span><i class="pc"></i>ПК</span>
+            <span><i class="tab"></i>Планшеты</span>
+            <span><i class="mob"></i>Смартфоны</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

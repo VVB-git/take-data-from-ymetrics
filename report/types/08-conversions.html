@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: post-click конверсии</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="title">Конверсионные <span class="accent">показатели</span></h1>
+        <div class="tbl">
+          <div class="tbl-head">
+            <div class="c-name">Post-click</div>
+            <div>Прямые</div>
+            <div>Асс-ые</div>
+          </div>
+          <div id="conv-postclick"></div>
+          <div class="tbl-head pv" style="margin-top:16px">
+            <div class="c-name">Post-view</div>
+            <div>Кол-во</div>
+          </div>
+          <div id="conv-postview"></div>
+        </div>
+        <div class="conv-notes" id="conv-notes"></div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Конверсионные показатели</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

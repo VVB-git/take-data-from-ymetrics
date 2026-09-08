@@ -1,0 +1,17 @@
+{
+  "name": "ym-report-server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Локальный сервис отчёта Метрики для ассистентов АМ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "sql.js": "^1.12.0"
+  }
+}

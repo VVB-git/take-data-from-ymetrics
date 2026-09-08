@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: контакты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide slide-contacts">
+      <div class="contacts-panel">
+        <p class="contacts-brand" data-bind="meta.brand"></p>
+        <h1>Контакты</h1>
+        <p class="contacts-campaign" data-bind="meta.campaignName"></p>
+        <a class="contacts-phone" data-bind="contacts.phone"></a>
+        <p class="contacts-mail">
+          Почта
+          <a data-bind="contacts.email"></a>
+        </p>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

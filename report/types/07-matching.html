@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: audience matching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="match-title">Audience matching</h1>
+        <p class="match-text" data-bind="matching.text"></p>
+        <p class="match-big" data-bind="matching.percent" data-fmt="pct1"></p>
+        <p class="match-caption"><span data-bind="meta.campaignSite"></span> vs Programmatic.ru</p>
+        <p class="match-caption">Новые пользователи</p>
+        <p class="match-big" data-bind="matching.newUsersPercent" data-fmt="pct1"></p>
+        <p class="match-caption">новых пользователей на сайт <span data-bind="meta.campaignSite"></span></p>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Audience matching</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

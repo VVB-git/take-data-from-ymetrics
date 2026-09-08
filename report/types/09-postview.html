@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: post-view</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="title">Результаты <span class="accent">Post-view</span> аналитики</h1>
+        <p class="section-label">Цели для отслеживания конверсий</p>
+        <div class="tbl">
+          <div class="tbl-head pv">
+            <div class="c-name" data-bind="postView.header"></div>
+            <div>Кол-во конверсий</div>
+          </div>
+          <div id="postview-rows"></div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Post-view</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

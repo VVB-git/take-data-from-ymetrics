@@ -9,8 +9,6 @@ desktop.ini
 !.env.example
 *.pem
 *.key
-
-# Google Apps Script CLI (script id and login)
 .clasp.json
 .clasprc.json
 
@@ -19,3 +17,11 @@ desktop.ini
 .vscode/
 node_modules/
 *.log
+
+# Local report service
+data/
+server/.env
+
+# Working files with campaign data, not the product
+*.xlsx
+Отчёт*.html

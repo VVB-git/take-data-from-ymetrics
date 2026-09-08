@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тип: поведение по устройствам</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <h1 class="title"><span class="accent">Поведенческие</span><br>факторы</h1>
+        <div class="pills-grid three-blocks">
+          <div class="device-block desktop">
+            <div class="pill-head">пк и ноутбуки</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.desktop.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.desktop.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.desktop.avgDuration"></span></div>
+          </div>
+          <div class="device-block mobile">
+            <div class="pill-head">смартфоны</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.mobile.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.mobile.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.mobile.avgDuration"></span></div>
+          </div>
+          <div class="device-block tablet">
+            <div class="pill-head">планшеты</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.tablet.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.tablet.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.tablet.avgDuration"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+      </div>
+    </section>
+  </div>
+  <script src="../data.js"></script>
+  <script src="../render.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Отчёт — Уют мебель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+  <div class="deck">
+
+    <section class="slide slide-cover" id="slide-cover">
+      <div class="cover-hero">
+        <span class="cover-brand" data-bind="meta.brand"></span>
+        <span class="cover-site" data-bind="meta.campaignSite"></span>
+      </div>
+      <div class="cover-body">
+        <p class="cover-kind" data-bind="meta.reportKind"></p>
+        <h1 class="cover-title" data-bind="meta.campaignName"></h1>
+        <div class="cover-dates">
+          <div>
+            <span class="label">Отчётный период</span>
+            <span class="value"><span data-bind="meta.periodFrom"></span> — <span data-bind="meta.periodTo"></span></span>
+          </div>
+          <div>
+            <span class="label">Цикл <span data-bind="meta.cycleNumber"></span></span>
+            <span class="value"><span data-bind="meta.cycleFrom"></span> — <span data-bind="meta.cycleTo"></span></span>
+          </div>
+        </div>
+        <p class="cover-report-date">Дата отчёта <span data-bind="meta.reportDate"></span></p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-mediaplan">
+      <div class="rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="slide-inner">
+        <div class="meta-row">
+          <div>
+            <p class="label">Период проведения</p>
+            <p class="value"><span data-bind="meta.periodFrom"></span> - <span data-bind="meta.periodTo"></span></p>
+          </div>
+          <div>
+            <p class="label">Дата отчета</p>
+            <p class="value" data-bind="meta.reportDate"></p>
+          </div>
+        </div>
+        <div class="banner" data-bind="meta.cycleLabel"></div>
+        <div class="kpi-head">
+          <h2>Ключевые метрики</h2>
+          <span class="legend-dot"></span>
+          <span class="legend-name">Programmatic</span>
+        </div>
+        <div class="metric-grid plan row-3">
+          <div class="cell"><span class="k">Показы план*</span><span class="v" data-bind="mediaPlan.planImpressions" data-fmt="int"></span></div>
+          <div class="cell"><span class="k">Охват план</span><span class="v" data-bind="mediaPlan.planReach" data-fmt="int"></span></div>
+          <div class="cell"><span class="k">Частота план</span><span class="v" data-bind="mediaPlan.planFrequency" data-fmt="freq"></span></div>
+        </div>
+        <div class="metric-grid plan row-2" style="margin-top:6px">
+          <div class="cell wide"><span class="k">CTR*, %</span><span class="v" data-bind="mediaPlan.planCtr" data-fmt="ctr"></span></div>
+          <div class="cell wide"><span class="k">бюджет</span><span class="v" data-bind="mediaPlan.planBudget" data-fmt="money"></span></div>
+        </div>
+
+        <div class="traffic">
+          <h2>трафик</h2>
+          <div class="clicks-wrap">
+            <div class="callout plan">
+              <div class="cap">План</div>
+              <div class="num" data-bind="mediaPlan.planClicks" data-fmt="int"></div>
+            </div>
+            <div class="donut" id="clicks-donut">
+              <div class="donut-label">Клики</div>
+            </div>
+            <div class="callout fact">
+              <div class="cap">Факт</div>
+              <div class="num" data-bind="mediaPlan.factClicks" data-fmt="int"></div>
+            </div>
+            <svg class="leaders" viewBox="0 0 523 220" fill="none" aria-hidden="true">
+              <path d="M198 148 L118 176 H52" />
+              <path d="M328 68 L408 44 H470" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="metric-grid fact row-3">
+          <div class="cell"><span class="k">Показы факт*</span><span class="v" data-bind="mediaPlan.factImpressions" data-fmt="int"></span></div>
+          <div class="cell"><span class="k">Охват факт</span><span class="v" data-bind="mediaPlan.factReach" data-fmt="int"></span></div>
+          <div class="cell"><span class="k">Частота факт</span><span class="v" data-bind="mediaPlan.factFrequency" data-fmt="freq"></span></div>
+        </div>
+        <div class="metric-grid fact row-2" style="margin-top:6px">
+          <div class="cell"><span class="k">CTR*, %</span><span class="v" data-bind="mediaPlan.factCtr" data-fmt="ctr"></span></div>
+          <div class="cell"><span class="k">бюджет</span><span class="v" data-bind="mediaPlan.factBudget" data-fmt="money"></span></div>
+        </div>
+      </div>
+      <p class="note">*Прогнозные KPI, указанные в медиаплане, основываются на реальных данных по предыдущим рекламным кампаниям. Фактические показатели зависят от различных факторов и могут отличаться от плановых как в большую, так и меньшую стороны.</p>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>сводная информация план</span>
+        <span class="page">2</span>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-results">
+      <div class="slide-inner">
+        <h1 class="title">Поведенческие факторы. <span class="accent">Результаты</span> работы</h1>
+        <p class="section-label">Вторичные показатели по трафику Programmatic.ru</p>
+        <div class="kpi-row">
+          <article class="kpi-card">
+            <header>Среднее время<br>на сайте, сек</header>
+            <div class="val" data-bind="behavior.programmatic.avgDuration"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Показатель отказов, %</header>
+            <div class="val" data-bind="behavior.programmatic.bounceRate" data-fmt="bounce"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Глубина<br>просмотра, стр.</header>
+            <div class="val" data-bind="behavior.programmatic.pageDepth" data-fmt="depth"></div>
+          </article>
+        </div>
+        <p class="section-label">Вторичные показатели по всему трафику сайта без Programmatic.ru</p>
+        <div class="kpi-row">
+          <article class="kpi-card">
+            <header>Среднее время<br>на сайте, сек</header>
+            <div class="val" data-bind="behavior.other.avgDuration"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Показатель отказов, %</header>
+            <div class="val" data-bind="behavior.other.bounceRate" data-fmt="bounce"></div>
+          </article>
+          <article class="kpi-card">
+            <header>Глубина<br>просмотра, стр.</header>
+            <div class="val" data-bind="behavior.other.pageDepth" data-fmt="depth"></div>
+          </article>
+        </div>
+        <h2 class="devices-title"><span class="accent">статистика</span> по типам устройств</h2>
+        <div class="device-chart">
+          <div class="device-donut-wrap">
+            <div class="device-donut" id="device-donut"></div>
+            <span class="pct mobile" data-bind="devicesShare.mobile" data-fmt="pct0"></span>
+            <span class="pct tablet" data-bind="devicesShare.tablet" data-fmt="pct0"></span>
+            <span class="pct desktop" data-bind="devicesShare.desktop" data-fmt="pct0"></span>
+          </div>
+          <div class="chart-legend">
+            <span><i class="pc"></i>ПК</span>
+            <span><i class="tab"></i>Планшеты</span>
+            <span><i class="mob"></i>Смартфоны</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+        <span class="page">3</span>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-devices">
+      <div class="slide-inner">
+        <h1 class="title"><span class="accent">Поведенческие</span><br>факторы</h1>
+        <div class="pills-grid three-blocks">
+          <div class="device-block desktop">
+            <div class="pill-head">пк и ноутбуки</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.desktop.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.desktop.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.desktop.avgDuration"></span></div>
+          </div>
+          <div class="device-block mobile">
+            <div class="pill-head">смартфоны</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.mobile.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.mobile.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.mobile.avgDuration"></span></div>
+          </div>
+          <div class="device-block tablet">
+            <div class="pill-head">планшеты</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="devicesBehavior.tablet.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="devicesBehavior.tablet.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="devicesBehavior.tablet.avgDuration"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+        <span class="page">4</span>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-age-gender">
+      <div class="slide-inner">
+        <h1 class="title"><span class="accent">Поведенческие</span><br>факторы</h1>
+        <p class="age-sub">возраст пользователей:</p>
+        <div class="bars" id="age-bars"></div>
+        <div class="gender-row">
+          <div class="gender-item male">
+            <div class="gender-donut" id="gender-male">
+              <span class="gval" data-bind="genderShare.male" data-fmt="pct0"></span>
+            </div>
+            <div class="gender-cap"><i></i>мужчины</div>
+          </div>
+          <div class="gender-item female">
+            <div class="gender-donut" id="gender-female">
+              <span class="gval" data-bind="genderShare.female" data-fmt="pct0"></span>
+            </div>
+            <div class="gender-cap"><i></i>женщины</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+        <span class="page">5</span>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-age-stats">
+      <div class="slide-inner">
+        <h1 class="stats-title"><span class="accent">статистика</span> по возрасту пользователей</h1>
+        <div class="stats-grid" id="age-stats"></div>
+        <div class="stats-grid gender-stats">
+          <div class="stat-block male">
+            <div class="pill-head">мужчины</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="genderBehavior.male.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="genderBehavior.male.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="genderBehavior.male.avgDuration"></span></div>
+          </div>
+          <div class="stat-block female">
+            <div class="pill-head">женщины</div>
+            <div class="pill"><span class="lab">Отказы:</span> <span data-bind="genderBehavior.female.bounceRate" data-fmt="bounce"></span></div>
+            <div class="pill"><span class="lab">Глубина просмотра:</span> <span data-bind="genderBehavior.female.pageDepth" data-fmt="depth"></span></div>
+            <div class="pill"><span class="lab">Время на сайте:</span> <span data-bind="genderBehavior.female.avgDuration"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <span data-bind="meta.brand"></span>
+        <span class="sep"></span>
+        <span>Поведенческие факторы</span>
+        <span class="page">6</span>
+      </div>
+    </section>
+
+    <section class="slide slide-contacts" id="slide-contacts">
+      <div class="contacts-panel">
+        <p class="contacts-brand" data-bind="meta.brand"></p>
+        <h1>Контакты</h1>
+        <p class="contacts-campaign" data-bind="meta.campaignName"></p>
+        <a class="contacts-phone" data-bind="contacts.phone"></a>
+        <p class="contacts-mail">
+          Почта
+          <a data-bind="contacts.email"></a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+  <script src="data.js?v=3"></script>
+  <script src="render.js?v=3"></script>
+</body>
+</html>
